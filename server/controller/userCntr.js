@@ -58,15 +58,15 @@ export const loginUser = async (req, res) => {
     console.log("find-user-pass-",findUser.password)
     console.log("pass-",password)
 
-    const isPassValidated = bcrypt.compare(password, findUser.password);
+    const isPassValidated = await bcrypt.compare(password, findUser.password);
     // if(!isPassValidated) return response.status(403).send('wrong password');
 
     console.log("xxx-",isPassValidated)
 
     if (findUser && isPassValidated) {
       token = findUser.generateAuthToken();
-      //console.log(findUser.isAdmin)
-      //console.log(findUser.isArtist)
+      console.log("findusr-admin-",findUser.isAdmin)
+      console.log("finduser-artist",findUser.isArtist)
 
       if (findUser.isAdmin) {
         res.cookie("owner", "admin", {
@@ -97,6 +97,8 @@ export const loginUser = async (req, res) => {
         email: findUser.email,
         token: token,
       };
+      console.log("userObj-",userObj)
+      
       return res.status(200).json({ status: true, data: userObj });
     } else {
       return res
