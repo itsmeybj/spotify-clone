@@ -30,8 +30,9 @@ const UserLogin = () => {
 
   const formSubmit = async () => {
     setLoading(true);
-    console.log(data)
+    console.log("form-submit1-",data)
     const result = await authUserApiDataToServer("user/login", data);
+    console.log("result-",result)
     if (result.status) {
       Cookies.set("email",result.data.email)
       setUserInfo(result.data)

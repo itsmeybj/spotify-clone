@@ -54,14 +54,14 @@ export const loginUser = async (req, res) => {
   try {
     let token;
     const findUser = await User.findOne({ email });
-    //console.log("token",findUser)
-    //console.log("find-user-pass-",findUser.password)
-    //console.log("pass-",password)
+    console.log("token",findUser)
+    console.log("find-user-pass-",findUser.password)
+    console.log("pass-",password)
 
-    const isPassValidated = await bcrypt.compare(password, findUser.password);
+    const isPassValidated = bcrypt.compare(password, findUser.password);
     // if(!isPassValidated) return response.status(403).send('wrong password');
 
-    //console.log("xxx-",isPassValidated)
+    console.log("xxx-",isPassValidated)
 
     if (findUser && isPassValidated) {
       token = findUser.generateAuthToken();
