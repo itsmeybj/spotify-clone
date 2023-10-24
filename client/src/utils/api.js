@@ -1,6 +1,7 @@
 import Cookies from "js-cookie"
 
-const url = "http://localhost:5000";
+//const url = "http://localhost:5000";
+const url = "https://spotify-clone-service.onrender.com";
 //login and register
 export const authUserApiDataToServer = async (route, data) => {
   console.log(data)
