@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import CopyrightIcon from "@mui/icons-material/Copyright";
+import {BsInstagram} from "react-icons/bs";
+import {CiFacebook} from "react-icons/ci";
+import {AiFillCopyrightCircle} from "react-icons/ai";
+
 import logo from "../../images/white_logo.svg";
 import { useEffect } from "react";
 
@@ -30,7 +30,7 @@ const footerLinks = [
 	"About ads"
 ];
 
-const footerIcons = [<InstagramIcon />, <TwitterIcon />, <FacebookIcon />];
+const footerIcons = [<BsInstagram />, <CiFacebook />, <BsInstagram />];
 
 const Welcome = () => {
 
@@ -120,7 +120,7 @@ const Welcome = () => {
 				</div>
 				<div className="text-white">
 					<div className="flex justify-center items-center">
-						<CopyrightIcon />
+						<AiFillCopyrightCircle />
 						<span>2023 Spotify</span>
 					</div>
 				</div>
