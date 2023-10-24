@@ -71,25 +71,25 @@ export const loginUser = async (req, res) => {
       if (findUser.isAdmin) {
         console.log("findUser.isAdmin-",findUser.isAdmin)
         res.cookie("owner", "admin", {
-          httpOnly: false,
+          httpOnly: true,
           maxAge: 60 * 60 * 24 * 30 * 1000,
         });
       } else if (findUser.isArtist) {
         console.log("findUser.isArtist",findUser.isArtist)
         res.cookie("owner", "artist", {
-          httpOnly: false,
+          httpOnly: true,
           maxAge: 60 * 60 * 24 * 30 * 1000,
         });
       } else {
         console.log("findUser.isUser",findUser)
         res.cookie("owner", "user", {
-          httpOnly: false,
+          httpOnly: true,
           maxAge: 60 * 60 * 24 * 30 * 1000,
         });
       }
 
       res.cookie("jwtSpotifyToken", token, {
-        httpOnly: false,
+        httpOnly: true,
         maxAge: 60 * 60 * 24 * 30 * 1000,
       });
 
