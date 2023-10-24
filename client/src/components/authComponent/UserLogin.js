@@ -36,6 +36,7 @@ const UserLogin = () => {
     if (result.status) {
       Cookies.set("email",result.data.email)
       setUserInfo(result.data)
+      console.log("result-data-",result.data)
       Toast(result.status,"Sing In successfully! your will be redirected to Home page")
       setData({
         email: "",
@@ -44,6 +45,7 @@ const UserLogin = () => {
       //Cookies.remove("link")
       setTimeout(() => {
         const owner = Cookies.get("owner")
+        console.log("cookie-value-",owner)
         if(owner ==="artist"){
           navigate("/artist")
         }else if(owner === "admin"){
@@ -54,6 +56,7 @@ const UserLogin = () => {
       }, 2000);
       setLoading(false);
     } else {
+      console.log("in else-",result)
       setLoading(false);
       Toast(result.status,result.message);
     }
