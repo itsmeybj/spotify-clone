@@ -68,40 +68,43 @@ export const loginUser = async (req, res) => {
       console.log("findusr-admin-",findUser.isAdmin)
       console.log("finduser-artist",findUser.isArtist)
 
-      if (findUser.isAdmin) {
-        console.log("findUser.isAdmin-",findUser.isAdmin)
-        res.cookie("owner", "admin", {
-          secure:true,sameSite:"none",
-          maxAge: 60 * 60 * 24 * 30 * 1000,
-        });
-      } else if (findUser.isArtist) {
-        console.log("findUser.isArtist",findUser.isArtist)
-        res.cookie("owner", "artist", {
-          secure:true,sameSite:"none",
-          maxAge: 60 * 60 * 24 * 30 * 1000,
-        });
-      } else {
-        console.log("findUser.isUser",findUser)
-        res.cookie("owner", "user", {
-          secure:true,sameSite:"none",
-          maxAge: 60 * 60 * 24 * 30 * 1000,
-        });
-      }
+      // if (findUser.isAdmin) {
+      //   console.log("findUser.isAdmin-",findUser.isAdmin)
+      //   res.cookie("owner", "admin", {
+      //     secure:true,sameSite:"none",
+      //     maxAge: 60 * 60 * 24 * 30 * 1000,
+      //   });
+      // } else if (findUser.isArtist) {
+      //   console.log("findUser.isArtist",findUser.isArtist)
+      //   res.cookie("owner", "artist", {
+      //     secure:true,sameSite:"none",
+      //     maxAge: 60 * 60 * 24 * 30 * 1000,
+      //   });
+      // } else {
+      //   console.log("findUser.isUser",findUser)
+      //   res.cookie("owner", "user", {
+      //     secure:true,sameSite:"none",
+      //     maxAge: 60 * 60 * 24 * 30 * 1000,
+      //   });
+      // }
 
-      res.cookie("jwtSpotifyToken", token, {
-        secure:true,sameSite:"none",
-        maxAge: 60 * 60 * 24 * 30 * 1000,
-      });
+      // res.cookie("jwtSpotifyToken", token, {
+      //   secure:true,sameSite:"none",
+      //   maxAge: 60 * 60 * 24 * 30 * 1000,
+      // });
 
-      let userObj = {
-        id: findUser._id,
-        name: findUser.name,
-        email: findUser.email,
-        token: token,
-      };
-      console.log("userObj-",userObj)
+      // let userObj = {
+      //   id: findUser._id,
+      //   name: findUser.name,
+      //   email: findUser.email,
+      //   token: token,
+      // };
+      
+      findUser.token = token
 
-      return res.status(200).json({ status: true, data: userObj });
+      //console.log("userObj-",userObj)
+
+      return res.status(200).json({ status: true, data: findUser });
     } else {
       return res
         .status(500)
