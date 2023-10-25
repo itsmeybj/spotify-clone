@@ -93,18 +93,20 @@ export const loginUser = async (req, res) => {
       //   maxAge: 60 * 60 * 24 * 30 * 1000,
       // });
 
-      // let userObj = {
-      //   id: findUser._id,
-      //   name: findUser.name,
-      //   email: findUser.email,
-      //   token: token,
-      // };
+      let userObj = {
+        id: findUser._id,
+        name: findUser.name,
+        email: findUser.email,
+        token: token,
+        isArtist:findUser.isArtist,
+        isAdmin:findUser.isAdmin
+      };
       
-      findUser.token = token
+      //findUser.token = token
 
       //console.log("userObj-",userObj)
 
-      return res.status(200).json({ status: true, data: findUser });
+      return res.status(200).json({ status: true, data: userObj });
     } else {
       return res
         .status(500)

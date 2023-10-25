@@ -27,15 +27,24 @@ const UserLogin = () => {
     const value = e.target.value;
     setData({ ...data, [name]: value });
   };
-
+  
   const formSubmit = async () => {
     setLoading(true);
     console.log("form-submit1-",data)
     const result = await authUserApiDataToServer("user/login", data);
     console.log("result-",result)
     if (result.status) {
+      Cookies.set("jwtSpotifyToken",result.data.token)        
       Cookies.set("email",result.data.email)
       setUserInfo(result.data)
+      if(result.data.isArtist){
+        Cookies.set("owner","artist")
+      }else if(result.data.isAdmin){
+        Cookies.set("owner","admin")
+      }
+      else{
+        Cookies.set("owner","user")        
+      }
       console.log("result-data-",result.data)
       Toast(result.status,"Sing In successfully! your will be redirected to Home page")
       setData({
