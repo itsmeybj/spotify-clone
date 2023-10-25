@@ -10,6 +10,7 @@ export const authUserApiDataToServer = async (route, data) => {
     const response = await fetch(`${url}/${route}`, {
       credentials: "include",
       method: "POST",
+      mode:"cors",
       headers: {
         "Content-Type": "application/json",
       },
