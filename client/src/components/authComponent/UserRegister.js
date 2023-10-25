@@ -64,34 +64,36 @@ const UserRegister = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center">
-      <div className="w-full border-b border-solid border-gray-200 p-5 flex justify-center">
+      <div className="w-full border-b border-solid border-gray-200 p-2 flex justify-center">
         <img src={logo} alt="" width={135} />
       </div>
-      <div className="inputRegion w-1/4 py-8 flex flex-col items-center justify-center">
-        <div className="text-xl font-bold mb-3">
+      <div className="inputRegion w-1/4 py-6 flex flex-col items-center justify-center">
+        <div className="text-xl font-bold mb-2">
           Sign up for free to start listening
         </div>
         <TextInput
           label="What`s your email"
           placeholder="Enter your email"
-          classname="my-6"
+          classname="my-3"
           name="email"
           value={data.email}
+          setInput={setInputData}
+        />
+        
+        <TextInput
+          label="What should we call you?"
+          placeholder="Enter a profile name"
+          classname="my-2"
+          name="name"
+          value={data.name}
           setInput={setInputData}
         />
         <PasswordInput
           label="Create a password"
           placeholder="Creat a password"
           name="password"
+          classname="my-3"
           value={data.password}
-          setInput={setInputData}
-        />
-        <TextInput
-          label="What should we call you?"
-          placeholder="Enter a profile name"
-          classname="my-6"
-          name="name"
-          value={data.name}
           setInput={setInputData}
         />
         <Button title="SIGN UP" submitData={formSubmit} loading={loading} />
